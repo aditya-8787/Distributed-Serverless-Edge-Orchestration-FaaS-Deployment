@@ -1,4 +1,87 @@
-node_modules
-functions
-lib
-data.json
+# Node.js
+node_modules/
+npm-debug.log
+package-lock.json
+yarn.lock
+.pnpm-debug.log
+
+# Runtime data
+logs/
+*.log
+*.pid
+
+# Environment files
+.env
+.env.local
+.env.development
+.env.test
+.env.production
+
+# Build directories
+dist/
+build/
+out/
+.next/
+
+# Dependency directories
+jspm_packages/
+.webpack/
+
+# Debug files
+*.debug
+*.map
+
+# IDE/Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+*.sublime-workspace
+*.sublime-project
+
+# OS metadata
+.DS_Store
+Thumbs.db
+
+# Test coverage
+coverage/
+.nyc_output/
+
+# Binary files
+*.wasm
+*.o
+*.a
+*.so
+*.dll
+
+# Dependency caches
+.cache/
+.temp/
+
+# Local development files
+docker-compose.override.yml
+
+# Function packages
+functions/**/node_modules/
+
+# Serverless framework
+.serverless/
+
+# Temporary files
+tmp/
+temp/
+
+# Editor configs
+*.code-workspace
+
+# System Files
+*.sys
+*.dmp
+
+# Compiled source
+*.com
+*.class
+*.dll
+*.exe
+*.o
+*.so

@@ -1,0 +1,53 @@
+version: '3.8'
+
+services:
+  orchestrator:
+    build: ./orchestrator
+    ports:
+      - "8080:8080"
+    environment:
+      - NODE_ENV=production
+      - EDGE_AUTH_TOKEN=supersecret
+      - DB_URL=postgres://postgres:password@db:5432/orchestrator
+    depends_on:
+      - db
+      - edge1
+      - edge2
+
+  db:
+    image: postgres:13
+    environment:
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=orchestrator
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+
+  edge1:
+    build: ./edge-nodes/node-connector
+    environment:
+      - PORT=3000
+      - NODE_AUTH_TOKEN=edgesecret
+    ports:
+      - "3000:3000"
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 512M
+
+  edge2:
+    build: ./edge-nodes/wasm-runtime
+    environment:
+      - PORT=3001
+      - NODE_AUTH_TOKEN=edgesecret
+    ports:
+      - "3001:3001"
+    deploy:
+      resources:
+        limits:
+          cpus: '1'
+          memory: 1G
+
+volumes:
+  pg_data:
+  functions:
